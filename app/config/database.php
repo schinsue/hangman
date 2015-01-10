@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'default' => 'sqlite',
+	'default' => 'mysql',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -46,23 +46,23 @@ return array(
 
 	'connections' => array(
 
-		'sqlite' => array(
-			'driver'   => 'sqlite',
-			'database' => __DIR__.'/../database/production.sqlite',
-			'prefix'   => '',
-		),
-
-		// 'mysql' => array(
-		// 	'driver'    => 'mysql',
-		// 	'host'      => 'localhost',
-		// 	'database'  => 'forge',
-		// 	'username'  => 'forge',
-		// 	'password'  => '',
-		// 	'charset'   => 'utf8',
-		// 	'collation' => 'utf8_unicode_ci',
-		// 	'prefix'    => '',
+		// 'sqlite' => array(
+		// 	'driver'   => 'sqlite',
+		// 	'database' => __DIR__.'/../storage/databases/production.sqlite',
+		// 	'prefix'   => '',
 		// ),
 
+		'mysql' => array(
+			'driver' => 'mysql',
+			'host' => $_ENV['IP'],
+			'database' => 'c9', //here goes your database name c9 by default
+			'username' => $_ENV['C9_USER'], //here goes your default username as you view using mysql-ctl cli command
+			'password' => '', //here goes your password leave it blank
+			'charset' => 'utf8',
+			'collation' => 'utf8_unicode_ci',
+			'prefix' => '',
+		),
+		
 		// 'pgsql' => array(
 		// 	'driver'   => 'pgsql',
 		// 	'host'     => 'localhost',

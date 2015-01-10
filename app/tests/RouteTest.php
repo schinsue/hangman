@@ -1,17 +1,16 @@
 <?php
 
-class ExampleTest extends TestCase {
+class GameTest extends TestCase {
 
 	/**
 	 * A basic functional test example.
 	 *
 	 * @return void
 	 */
-	public function testBasicExample()
+	public function testRootRoute()
 	{
 		$crawler = $this->client->request('GET', '/');
 
 		$this->assertTrue($this->client->getResponse()->isOk());
 	}
-
 }

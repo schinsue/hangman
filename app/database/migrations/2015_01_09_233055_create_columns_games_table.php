@@ -16,11 +16,11 @@ class CreateColumnsGamesTable extends Migration {
 		{
 		    Schema::table('games', function($table)
 			{
-			    $table->string('word')->nullable();
-			 	$table->string('solution')->nullable();
-				$table->integer('tries_left')->nullable();
-				$table->string('status')->nullable();
-				$table->nullableTimestamps();
+			    $table->string('word');
+			 	$table->string('solution');
+				$table->integer('tries_left')->default(11);
+				$table->string('status');
+				$table->timestamps();
 			});
 		}
 	}

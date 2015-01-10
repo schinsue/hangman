@@ -1,6 +1,6 @@
 <?php
 
-class GameController extends \BaseController {
+class GameController extends BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -43,7 +43,7 @@ class GameController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		return Response::json(array('id' => $id, 'name' => 'Steve', 'state' => 'CA'));
 	}
 
 
