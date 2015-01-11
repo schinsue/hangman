@@ -54,10 +54,10 @@ return array(
 
 		'mysql' => array(
 			'driver' => 'mysql',
-			'host' => $_ENV['IP'],
-			'database' => 'c9', //here goes your database name c9 by default
-			'username' => $_ENV['C9_USER'], //here goes your default username as you view using mysql-ctl cli command
-			'password' => '', //here goes your password leave it blank
+			'host' => '0.0.0.0', // Local environment variable used =)
+			'database' => 'c9', 
+			'username' => 'schinsue', // Local environment variable used =)
+			'password' => '',
 			'charset' => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix' => '',

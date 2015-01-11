@@ -6,7 +6,8 @@
 	"type": "project",
 	"require": {
 		"laravel/framework": "4.2.*",
-		"phpunit/phpunit": "4.0.*"
+		"phpunit/phpunit": "4.0.*",
+		"twitter/bootstrap": "*"
 	},
 	"autoload": {
 		"classmap": [

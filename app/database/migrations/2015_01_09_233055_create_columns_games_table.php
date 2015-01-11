@@ -19,7 +19,7 @@ class CreateColumnsGamesTable extends Migration {
 			    $table->string('word');
 			 	$table->string('solution');
 				$table->integer('tries_left')->default(11);
-				$table->string('status');
+				$table->string('status')->default('busy');
 				$table->timestamps();
 			});
 		}
@@ -32,10 +32,13 @@ class CreateColumnsGamesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('games', function($table)
+		if (Schema::hasTable('games'))
 		{
-		    $table->dropColumn(array('created_at', 'updated_at', 'word', 'solution', 'tries_left', 'status'));
-		});
+			Schema::table('games', function($table)
+			{
+			    $table->dropColumn(array('created_at', 'updated_at', 'word', 'solution', 'tries_left', 'status'));
+			});
+		}
 	}
 
 }
