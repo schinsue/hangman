@@ -1,9 +1,14 @@
 <?php
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
+App::error(function(ModelNotFoundException $e)
+{
+    return Response::make('Not Found', 404);
+});
+
 class Game extends Eloquent {
-
-    //protected $table = 'games';
     
-    // protected $guarded = array('id');
-
+    protected $guarded = array('id');
+    
 }

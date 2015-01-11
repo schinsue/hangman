@@ -18,4 +18,4 @@ Route::get('/', function()
 });
 
 // GAME ROUTES
-Route::resource('games', 'GameController', array('except' => array('create','destroy')));
+Route::resource('games', 'GameController', array('except' => array('create','destroy', 'edit')));
