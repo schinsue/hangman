@@ -15,17 +15,6 @@ class GameController extends BaseController {
 	}
 
 	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	// public function create()
-	// {
-	// 	//
-	// }
-
-
-	/**
 	 * Store a newly created resource in storage.
 	 *
 	 * @return Response
@@ -38,18 +27,17 @@ class GameController extends BaseController {
 		$randomWord = str_replace(array("\n", " "), '', $wordlist[$randomNum]);
 		
 		// Put a dot for each letter of the word
-		$word = str_repeat('.', strlen($randomWord));
+		$obfuscatedWord = str_repeat('.', strlen($randomWord));
 		
 		// Save this in the database as a new game
 		$game = new Game;
-		$game->word = $word;
+		$game->word = $obfuscatedWord;
 		$game->solution = $randomWord;
 		$game->save();
-		
-		return Redirect::to('games')->with('message', 'Game succesfully created!');
+	
+		return Redirect::to('games')->with('message', "Game #$game->id succesfully created!");
 		
 	}
-
 
 	/**
 	 * Display the specified resource.
@@ -59,7 +47,8 @@ class GameController extends BaseController {
 	 */
 	public function show($id)
 	{
-		return Response::json(array('id' => $id, 'name' => 'Steve', 'state' => 'CA'));
+		$game = Game::find($id);
+		return Response::json(array('word' => $game->word, 'solution' => $game->solution, 'tries_left' => $game->tries_left, 'status' => $game->status, 'created_at' => $game->created_at));
 	}
 
 

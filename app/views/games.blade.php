@@ -10,7 +10,7 @@
                 <h2>{{ Session::get('message') }}</h2>
             </div>
         @endif
-        
+
         <div class="table-responsive">
             <table class="table table-striped">
               <caption>Overview of all games.</caption>
