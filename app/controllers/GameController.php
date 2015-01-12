@@ -67,51 +67,8 @@ class GameController extends BaseController {
 		    // Check if strlen is 1 and matches the regex a-z
 		    if (strlen($guess) === 1 && preg_match('/[a-z]/', $guess))
 		    {
-		    	$game = Game::findOrFail($id);
-		    	
-		    	// Check if game isn't already over
-		    	if ($game->status === 'busy')
-		    	{
-		    		$oldWord = $currentWord = $game->word;
-		    	
-			    	// Check and replace if guess is correct
-			    	for ($i=0; $i<strlen($game->solution); $i++)
-			    	{
-			    		if ($game->solution[$i] == $guess)
-			    			$currentWord[$i] = $guess;
-			    	}
-			    	
-			    	// If the guess is incorrect, decrement tries and if no tries left put game status on fail
-			    	// If the guess is the same letter that has already been guessed, tries will also be decremented
-			    	// If guess is correct, change the current word in Database without decrementing
-			    	if ($currentWord === $oldWord)
-			    	{
-			    		if ((int)$game->tries_left === 1)
-			    		{
-			    			$game->status = 'fail';
-			    		}
-			    		
-			    		$game->tries_left -= 1;
-			    	}
-			    	else 
-			    	{
-			    		$game->word = $currentWord;
-			    	}
-			    	
-			    	// If user completed the word after guessing, put game status on success
-			    	if ($game->word === $game->solution)
-			    	{
-			    		$game->status = 'success';
-			    	}
-			    	
-			    	// Save updates
-			    	$game->save();
-			    	
-			    	return Response::json(array('status' => 'success', 'message' => "Success! Game #$game->id updated!"), 200);
-		    	}
-
-		    	return Response::json(array('status' => 'fail', 'message' => "Fail! Game #$game->id is already over!"), 500);
-		    	
+		    	return (Game::tryGuess($id, $guess)) ? Response::json(array('status' => 'success', 'message' => "Success! Game #$id updated!"), 200)
+		  									 		 : Response::json(array('status' => 'fail', 'message' => "Fail! Game #$id is already over!"), 500);
 		    }
 		    
 		}

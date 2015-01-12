@@ -10,4 +10,4 @@ You can POST or PUT using the postman chrome extension if necessary.
 
 Time spent in total: About 6 hours.
 
-PS: Tests are included, If this was a bigger project I would've separated logic in the update function of the GameController. Also I would've put the wordlist in the database, but since that wasn't the requirement this solution will suffice.
+PS: Tests are included. Also I would've put the wordlist in the database, but since that wasn't the requirement this solution will suffice.
