@@ -11,18 +11,22 @@ You can POST or PUT using the postman chrome extension if necessary.
 ###Files of Interest:
 
 **Routes:**
+
 app/routes.php
 
 **Game logic:**
+
 app/controllers/GameController.php
 app/models/Game.php
 app/views/games.blade.php
 
 **Tests:**
+
 app/tests/GameTest.php
 app/seeds/GameTableSeeder.php
 
 **Database migrations:**
+
 app/database/migrations/2015_01_09_231311_create_games_table.php
 app/database/migrations/2015_01_09_233055_create_columns_games_table.php
 
