@@ -5,12 +5,6 @@
     	<link href="{{ secure_asset('css/bootstrap.min.css') }}" rel="stylesheet">
     </head>
     <body>
-        @if(Session::has('message'))
-            <div class="alert-box success">
-                <h2>{{ Session::get('message') }}</h2>
-            </div>
-        @endif
-
         <div class="table-responsive">
             <table class="table table-striped">
               <caption>Overview of all games.</caption>
