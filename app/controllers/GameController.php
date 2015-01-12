@@ -22,7 +22,7 @@ class GameController extends BaseController {
 	public function store()
 	{
 		// Choose random word from wordlist and clean it up
-		$wordlist = file('../words.english'); 
+		$wordlist = file(base_path('words.english')); 
 		$randomNum = array_rand($wordlist);
 		$randomWord = str_replace(array("\n", " "), '', $wordlist[$randomNum]);
 		
@@ -70,7 +70,7 @@ class GameController extends BaseController {
 		    	$game = Game::findOrFail($id);
 		    	
 		    	// Check if game isn't already over
-		    	if ($game->status !== 'fail')
+		    	if ($game->status === 'busy')
 		    	{
 		    		$oldWord = $currentWord = $game->word;
 		    	
@@ -86,7 +86,7 @@ class GameController extends BaseController {
 			    	// If guess is correct, change the current word in Database without decrementing
 			    	if ($currentWord === $oldWord)
 			    	{
-			    		if ($game->tries_left == 1)
+			    		if ((int)$game->tries_left === 1)
 			    		{
 			    			$game->status = 'fail';
 			    		}
@@ -107,7 +107,7 @@ class GameController extends BaseController {
 			    	// Save updates
 			    	$game->save();
 			    	
-			    	return Response::json(array('status' => 'success', 'message' => "Success! Game #$game->id updated!"), 201);
+			    	return Response::json(array('status' => 'success', 'message' => "Success! Game #$game->id updated!"), 200);
 		    	}
 
 		    	return Response::json(array('status' => 'fail', 'message' => "Fail! Game #$game->id is already over!"), 500);

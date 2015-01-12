@@ -16,11 +16,14 @@ class CreateColumnsGamesTable extends Migration {
 		{
 		    Schema::table('games', function($table)
 			{
-			    $table->string('word');
-			 	$table->string('solution');
+				// Putting defaults for everything so it's easily testable if something goes wrong.
+			    $table->string('word')->default('invalid');
+			 	$table->string('solution')->default('invalid');
 				$table->integer('tries_left')->default(11);
 				$table->string('status')->default('busy');
-				$table->timestamps();
+				
+				// Laravel automatically handles timestamps so it won't ever be null =)
+				$table->nullableTimestamps();	
 			});
 		}
 	}
