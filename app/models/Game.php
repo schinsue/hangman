@@ -11,6 +11,12 @@ class Game extends Eloquent {
     
     protected $guarded = array('id');
     
+    /**
+	 * Handles logic of creating a new game
+	 *
+	 * @param 
+	 * @return mixed
+	 */
     public static function createGame()
     {
         // Choose random word from wordlist and clean it up
