@@ -36,7 +36,7 @@ class GameController extends BaseController {
 	 */
 	public function show($id)
 	{
-		$game = Game::find($id);
+		$game = Game::findOrFail($id);
 		return Response::json(array('word' => $game->word, 'solution' => $game->solution, 'tries_left' => $game->tries_left, 'status' => $game->status, 'created_at' => $game->created_at));
 	}
 
