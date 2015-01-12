@@ -18,7 +18,7 @@ PS: Tests are included. Also I would've put the wordlist in the database, but si
 app/routes.php
 
 ####Game logic:
-app/controllers/GameController.php <br>
+app/controllers/GameController.php
 app/models/Game.php
 app/views/games.blade.php
 
