@@ -17,8 +17,8 @@ class CreateColumnsGamesTable extends Migration {
 		    Schema::table('games', function($table)
 			{
 				// Putting defaults for everything so it's easily testable if something goes wrong.
-			    $table->string('word')->default('invalid');
-			 	$table->string('solution')->default('invalid');
+			    $table->string('word')->nullable();
+			 	$table->string('solution')->nullable();
 				$table->integer('tries_left')->default(11);
 				$table->string('status')->default('busy');
 				

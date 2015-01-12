@@ -55,7 +55,7 @@ class GameTest extends TestCase {
 		
 		// Check if the new game was saved correctly (invalid is the default value for words and solutions)
 		$this->assertTrue(strlen($game->word) === strlen($game->solution));
-		$this->assertTrue($game->word !== 'invalid' && $game->solution !== 'invalid');
+		$this->assertTrue($game->word !== null && $game->solution !== null);
 		$this->assertTrue((int)$game->tries_left === 11);
 		$this->assertTrue($game->status === 'busy');
 	}
