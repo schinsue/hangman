@@ -11,6 +11,23 @@ class Game extends Eloquent {
     
     protected $guarded = array('id');
     
+    public static function createGame()
+    {
+        // Choose random word from wordlist and clean it up
+		$wordlist = file(base_path('words.english')); 
+		$randomNum = array_rand($wordlist);
+		$randomWord = str_replace(array("\n", " "), '', $wordlist[$randomNum]);
+		
+		// Put a dot for each letter of the word
+		$obfuscatedWord = str_repeat('.', strlen($randomWord));
+		
+		// Save this in the database as a new game
+		$game = new Game;
+		$game->word = $obfuscatedWord;
+		$game->solution = $randomWord;
+		
+		return ($game->save()) ? $game->id : false;
+    }
     
 	/**
 	 * Handles the guessing logic
@@ -67,5 +84,6 @@ class Game extends Eloquent {
     	    return false;
     	}
     }
+    
     
 }

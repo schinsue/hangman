@@ -21,22 +21,11 @@ class GameController extends BaseController {
 	 */
 	public function store()
 	{
-		// Choose random word from wordlist and clean it up
-		$wordlist = file(base_path('words.english')); 
-		$randomNum = array_rand($wordlist);
-		$randomWord = str_replace(array("\n", " "), '', $wordlist[$randomNum]);
 		
-		// Put a dot for each letter of the word
-		$obfuscatedWord = str_repeat('.', strlen($randomWord));
+		$newGameId = Game::createGame();
 		
-		// Save this in the database as a new game
-		$game = new Game;
-		$game->word = $obfuscatedWord;
-		$game->solution = $randomWord;
-		$game->save();
-	
-		return Redirect::to('games')->with('message', "Game #$game->id succesfully created!");
-		
+		return ($newGameId) ? Response::json(array('status' => 'success', 'message' => "Success! Game #$newGameId Created!"), 200)
+						    : Response::json(array('status' => 'error', 'message' => "Error! Game not created, something went wrong!"), 500);
 	}
 
 	/**
@@ -68,7 +57,7 @@ class GameController extends BaseController {
 		    if (strlen($guess) === 1 && preg_match('/[a-z]/', $guess))
 		    {
 		    	return (Game::tryGuess($id, $guess)) ? Response::json(array('status' => 'success', 'message' => "Success! Game #$id updated!"), 200)
-		  									 		 : Response::json(array('status' => 'fail', 'message' => "Fail! Game #$id is already over!"), 500);
+		  									 		 : Response::json(array('status' => 'error', 'message' => "Fail! Game #$id is already over!"), 500);
 		    }
 		    
 		}
