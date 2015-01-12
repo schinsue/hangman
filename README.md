@@ -18,14 +18,14 @@ PS: Tests are included. Also I would've put the wordlist in the database, but si
 app/routes.php
 
 ####Game logic:
-app/controllers/GameController.php
-app/models/Game.php
-app/views/games.blade.php
+app/controllers/GameController.php <br>
+app/models/Game.php <br>
+app/views/games.blade.php <br>
 
 ####Tests:
-app/tests/GameTest.php
-app/seeds/GameTableSeeder.php
+app/tests/GameTest.php <br>
+app/seeds/GameTableSeeder.php <br>
 
 ####Database migrations:
-app/database/migrations/2015_01_09_231311_create_games_table.php
-app/database/migrations/2015_01_09_233055_create_columns_games_table.php
+app/database/migrations/2015_01_09_231311_create_games_table.php <br>
+app/database/migrations/2015_01_09_233055_create_columns_games_table.php <br>
